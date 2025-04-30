@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\FakultasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/profile', function () {
-    return view('profile');
+Route::get('/profil', function () {
+    return view('profil');
 });
+Route::resource('/fakultas', FakultasController::class); // resource untuk menghandle 7 fungsi yg ada di controller
