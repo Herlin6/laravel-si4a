@@ -11,8 +11,11 @@ class ProdiController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        // panggil model prodi menggunakan eloquent
+        $prodi = Prodi::all(); //select * from prodi
+        // dd($prodi);
+        return view('prodi.index') -> with('prodi', $prodi); //selain compact, bisa pakai with() //'prodi' => $prodi di view
     }
 
     /**
