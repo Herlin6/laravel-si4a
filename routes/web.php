@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,3 +13,4 @@ Route::get('/profil', function () {
 });
 Route::resource('/fakultas', FakultasController::class); // resource untuk menghandle 7 fungsi yg ada di controller
 Route::resource('/prodi', ProdiController::class);
+Route::resource('/mahasiswa', MahasiswaController::class);

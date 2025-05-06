@@ -1,3 +1,5 @@
+@extends('layout.main')
+@section('content')
 <h1>Program Studi</h1>
 
 <table>
@@ -19,3 +21,4 @@
     
     @endforeach
 </table>
+@endsection

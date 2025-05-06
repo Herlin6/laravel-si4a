@@ -12,4 +12,9 @@ class Prodi extends Model
     {
         return $this->belongsTo(Fakultas::class, 'fakultas_id', 'id'); //relasi ke fakultas
     }
+
+    // public function mahasiswa()
+    // {
+    //     return $this->hasMany(Prodi::class, 'prodi_id', 'id');
+    // }
 }
