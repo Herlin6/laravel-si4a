@@ -1,5 +1,4 @@
-@extends('layout.main')
-@section('content')
+@extends('layout.main') @section('content')
 <h1>Fakultas</h1>
 
 <table>

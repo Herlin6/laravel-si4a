@@ -1,5 +1,4 @@
-@extends('layout.main')
-@section('content')
+@extends('layout.main') @section('content')
 <h1>Mahasiswa</h1>
 
 <table>
@@ -17,20 +16,15 @@
         <td>{{ $item->npm }}</td>
         <td>{{ $item->nama }}</td>
         <td>
-            @php
-                if ($item->jenis_kelamin == 'L') {
-                    echo 'Laki-laki';
-                } else {
-                    echo 'Perempuan';
-                }
-            @endphp
+            @php if ($item->jenis_kelamin == 'L') { echo 'Laki-laki'; } else {
+            echo 'Perempuan'; } @endphp
         </td>
         <td>{{ $item->tanggal_lahir }}</td>
         <td>{{ $item->tempat_lahir }}</td>
         <td>{{ $item->asal_sma }}</td>
         <td>{{ $item->prodi->nama }}</td>
     </tr>
-    
+
     @endforeach
 </table>
 

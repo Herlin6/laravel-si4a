@@ -1,5 +1,4 @@
-@extends('layout.main')
-@section('content')
+@extends('layout.main') @section('content')
 <h1>Program Studi</h1>
 
 <table>
@@ -16,9 +15,10 @@
         <td>{{ $item->singkatan }}</td>
         <td>{{ $item->kaprodi }}</td>
         <td>{{ $item->sekretaris }}</td>
-        <td>{{ $item->fakultas->nama }}</td> {{-- fakultas: nama function di models// fakultas->dekan --}}
+        <td>{{ $item->fakultas->nama }}</td>
+        {{-- fakultas: nama function di models// fakultas->dekan --}}
     </tr>
-    
+
     @endforeach
 </table>
 @endsection

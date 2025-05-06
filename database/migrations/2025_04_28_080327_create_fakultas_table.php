@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fakultas', function (Blueprint $table) {
-            $table->id(); //primary, auto increment, bigint
-            $table->string('nama', 50); //varchar(50)
-            $table->string('singkatan', 10); //varchar(10)
-            $table->string('dekan', 50); //varchar(50)
-            $table->string('wakil_dekan', 30); //varchar(30)
+            $table->id(); // primary, auto increment, bigint
+            $table->string('nama', 50); // varchar(50)
+            $table->string('singkatan', 10); // varchar(10)
+            $table->string('dekan', 50); // varchar(50)
+            $table->string('wakil_dekan', 30); // varchar(30)
             $table->timestamps();
         });
     }
