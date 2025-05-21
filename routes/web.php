@@ -5,9 +5,12 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FakultasController::class, 'index']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/profil', function () {
     return view('profil');
 });

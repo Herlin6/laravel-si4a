@@ -1,10 +1,10 @@
-@extends('layout.main') @section('content') @section('title', 'Prodi')
+@extends('layout.main') @section('content') @section('title', 'Mahasiswa')
 <div class="row">
     <div class="col-12">
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List Prodi</h3>
+                <h3 class="card-title">Detail Fakultas</h3>
                 <div class="card-tools">
                     <button
                         type="button"
@@ -26,31 +26,26 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="{{ route('prodi.create') }}" class="btn btn-primary">Tambah</a><br/><br/>
-                <table class="table table-bordered table-striped">
+                <table class="table">
                     <tr>
-                        <th>Nama</th>
+                        <th class="w-25">Nama</th>
+                        <td>{{ $fakultas->nama }}</td>
+                    </tr>
+                    <tr>
                         <th>Singkatan</th>
-                        <th>kaprodi</th>
-                        <th>Sekretaris</th>
-                        <th>Fakultas</th>
+                        <td>{{ $fakultas->singkatan }}</td>
                     </tr>
-                    @foreach ($prodi as $item)
                     <tr>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->singkatan }}</td>
-                        <td>{{ $item->kaprodi }}</td>
-                        <td>{{ $item->sekretaris }}</td>
-                        <td>{{ $item->fakultas->nama }}</td>
-                        {{-- fakultas: nama function di models// fakultas->dekan --}}
+                        <th>Dekan</th>
+                        <td>{{ $fakultas->dekan }}</td>
                     </tr>
-                
-                    @endforeach
+                    <tr>
+                        <th>Wakil Dekan</th>
+                        <td>{{ $fakultas->wakil_dekan }}</td>
+                    </tr>
                 </table>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">Footer</div>
-            <!-- /.card-footer-->
         </div>
         <!-- /.card -->
     </div>

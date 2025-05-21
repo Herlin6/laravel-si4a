@@ -310,9 +310,21 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class='nav-link' href='/dist/pages/generate/theme'>
-                  <i class="nav-icon bi bi-palette"></i>
-                  <p>Theme Generate</p>
+                <a class='nav-link' href='{{ url('fakultas') }}'>
+                  <i class="nav-icon bi bi-journals"></i>
+                  <p>Fakultas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class='nav-link' href='{{ url('prodi') }}'>
+                  <i class="nav-icon bi bi-highlighter"></i>
+                  <p>Prodi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class='nav-link' href='{{ url('mahasiswa') }}'>
+                  <i class="nav-icon bi bi-person-fill"></i>
+                  <p>Mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
