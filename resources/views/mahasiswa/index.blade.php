@@ -42,9 +42,9 @@
                     </tr>
                     @foreach ($mahasiswa as $item)
                     <tr>
-                        {{-- <td><img src="images/{{$item->foto}}" width="80"></td> --}}
+                        <td><img src="images/{{$item->foto}}" width="80"></td>
 
-                        <td><img src="{{ asset('images/' . $mahasiswa->foto) }}" width="80"></td>
+                        {{-- <td><img src="{{ asset('images/' . $mahasiswa->foto) }}" width="80"></td> --}}
                         <td>{{ $item->npm }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>
@@ -62,7 +62,13 @@
                             <form action="{{ route("mahasiswa.destroy", $item->id) }}" method="POST" class="d-inline"> {{-- class d inline agar sejajar --}}
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit"
+                                  class="btn btn-danger show_confirm"
+                                  data-toggle="tooltip"
+                                  title='Delete'
+                                  data-nama='{{ $item->nama }}'>
+                                    Delete
+                                </button>
                             </form>
                         </td>
                     </tr>

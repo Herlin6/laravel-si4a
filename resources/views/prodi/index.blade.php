@@ -34,6 +34,7 @@
                         <th>kaprodi</th>
                         <th>Sekretaris</th>
                         <th>Fakultas</th>
+                        <th>Action</th>
                     </tr>
                     @foreach ($prodi as $item)
                     <tr>
@@ -43,14 +44,27 @@
                         <td>{{ $item->sekretaris }}</td>
                         <td>{{ $item->fakultas->nama }}</td>
                         {{-- fakultas: nama function di models// fakultas->dekan --}}
+                        <td>
+                            <a href="{{ route('prodi.show', $item->id) }}" class="btn btn-info">Show</a>
+                            <a href="{{ route('prodi.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route("prodi.destroy", $item->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                  class="btn btn-danger show_confirm"
+                                  data-toggle="tooltip"
+                                  title='Delete'
+                                  data-nama='{{ $item->nama }}'>
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 
                     @endforeach
                 </table>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">Footer</div>
-            <!-- /.card-footer-->
         </div>
         <!-- /.card -->
     </div>

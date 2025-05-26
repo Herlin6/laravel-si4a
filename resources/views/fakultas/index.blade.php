@@ -51,7 +51,11 @@
                             <form action="{{ route("fakultas.destroy", $item->id) }}" method="POST" class="d-inline"> {{-- class d inline agar sejajar --}}
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit"
+                                  class="btn btn-danger show_confirm"
+                                  data-toggle="tooltip"
+                                  title='Delete'
+                                  data-nama='{{ $item->nama }}'>
                                     Delete
                                 </button>
                             </form>

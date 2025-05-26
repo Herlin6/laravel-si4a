@@ -88,6 +88,13 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->delete();
+        if ($mahasiswa->foto){
+            $fotoPath = public_path('images/' . $mahasiswa->foto);
+            if (file_exists($fotoPath)) {
+                unlink($fotoPath); //hapus foto dari folder public/images
+            }
+        }
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa a.n. '. $mahasiswa->nama.' berhasil dihapus.');
     }
 }
