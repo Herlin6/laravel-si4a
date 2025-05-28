@@ -60,17 +60,29 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodi $prodi)
+    public function edit($prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        $fakultas = Fakultas::all();
+        return view('prodi.edit', compact('prodi', 'fakultas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, $prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        //validasi input
+        $input = $request-> validate([
+            'nama' => 'required',
+            'singkatan' => 'required|max:5',
+            'kaprodi' => 'required',
+            'sekretaris' => 'required',
+            'fakultas_id' => 'required',
+        ]);
+        $prodi->update($input);
+        return redirect()->route('prodi.index')->with('success', 'Profram Studi berhasil diperbarui.');
     }
 
     /**

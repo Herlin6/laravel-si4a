@@ -70,17 +70,40 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mahasiswa $mahasiswa)
+    public function edit($mahasiswa)
     {
-        //
+        $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
+        $prodi = Prodi::all();
+        return view('mahasiswa.edit', compact('mahasiswa', 'prodi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, $mahasiswa)
     {
-        //
+        $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
+        //validasi input
+        $input = $request-> validate([
+            'npm' => 'required',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
+            'tempat_lahir' => 'required',
+            'asal_sma' => 'required',
+            'prodi_id' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        //kyknyo tambah ini
+        if ($request->hasFile('foto')){
+            $file = $request->file('foto'); //ambil file foto
+            $filename = time() . "." . $file->getClientOriginalExtension(); // bisa pakai npm atau time() agar unique
+            $file->move(public_path('images'), $filename); //simpan foto ke folder public/images
+            $input['foto'] = $filename; //simpan nama file baru ke $input
+        }
+        // update data fakultas
+        $mahasiswa->update($input);
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil diperbarui.');
     }
 
     /**
