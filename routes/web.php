@@ -18,3 +18,4 @@ Route::get('/profil', function () {
 Route::resource('/fakultas', FakultasController::class); // resource untuk menghandle 7 fungsi yg ada di controller
 Route::resource('/prodi', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
+Route::get('/dashboard', [DashboardController::class, 'index']);
