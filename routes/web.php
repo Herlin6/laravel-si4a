@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FakultasController::class, 'index']);
@@ -18,4 +21,7 @@ Route::get('/profil', function () {
 Route::resource('/fakultas', FakultasController::class); // resource untuk menghandle 7 fungsi yg ada di controller
 Route::resource('/prodi', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('/sesi', SesiController::class);
+Route::resource('/mata-kuliah', MataKuliahController::class);
+Route::resource('/jadwal', JadwalController::class);
 Route::get('/dashboard', [DashboardController::class, 'index']);
