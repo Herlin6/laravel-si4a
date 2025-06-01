@@ -42,9 +42,12 @@
                     </tr>
                     @foreach ($mahasiswa as $item)
                     <tr>
-                        <td><img src="images/{{$item->foto}}" width="80"></td>
-
-                        {{-- <td><img src="{{ asset('images/' . $mahasiswa->foto) }}" width="80"></td> --}}
+                    
+                        @if ($item->foto)
+                            <td><img src="images/{{$item->foto}}" width="80"></td>
+                        @else
+                            <td><img src="images/default.png" width="80"></td>
+                        @endif
                         <td>{{ $item->npm }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>

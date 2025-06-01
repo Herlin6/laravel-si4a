@@ -95,12 +95,20 @@ class MahasiswaController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         //kyknyo tambah ini
-        if ($request->hasFile('foto')){
-            $file = $request->file('foto'); //ambil file foto
-            $filename = time() . "." . $file->getClientOriginalExtension(); // bisa pakai npm atau time() agar unique
-            $file->move(public_path('images'), $filename); //simpan foto ke folder public/images
-            $input['foto'] = $filename; //simpan nama file baru ke $input
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . "." . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            // simpan nama file ke dalam input
+            $input['foto'] = $filename;
+            // hapus foto lama
+            if ($mahasiswa->foto && file_exists(public_path('images/' . $mahasiswa->foto))) {
+                unlink(public_path('images/' . $mahasiswa->foto));
+            }
+        } else {
+            $input['foto'] = $mahasiswa->foto;
         }
+        
         // update data fakultas
         $mahasiswa->update($input);
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil diperbarui.');

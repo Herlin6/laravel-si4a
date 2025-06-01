@@ -1,4 +1,4 @@
-@extends('layout.main') @section('content') @section('title', 'Fakultas')
+@extends('layout.main') @section('content') @section('title', 'Mahasiswa')
 <div class="row">
     <div class="col-12">
         {{-- Form tambah fakultas --}}
@@ -12,6 +12,7 @@
             <form
                 action="{{ route('mahasiswa.update', $mahasiswa->id) }}"
                 method="POST"
+                enctype="multipart/form-data"
             >
                 @csrf @method('PUT')
                 <!--begin::Body-->
@@ -115,14 +116,20 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="foto" class="form-label"
-                            >Foto Mahasiswa</label
-                        >
+                        <label for="foto" class="form-label">
+                            Foto Mahasiswa
+                        </label>
+                        <div class="p-2">
+                            @if ($mahasiswa->foto)
+                                <img src="{{ asset('images/' . $mahasiswa->foto) }}" width="100">
+                            @else
+                                <img src="{{ asset('images/default.png') }}" width="100">
+                            @endif
+                        </div>
                         <input
                             type="file"
                             class="form-control"
                             name="foto"
-                            value="{{old('foto') ? old('foto') : $mahasiswa->foto}}"
                         />
                         @error('foto')
                         <div class="text-danger">{{ $message }}</div>
