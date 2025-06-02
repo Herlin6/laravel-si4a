@@ -68,19 +68,19 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label for="user_id" class="form-label"
                             >Dosen</label
                         >
                         <select class="form-control" name="user_id">
                             @foreach ($user as $item)
-                                <option value="{{$item->id}}">{{ $item->nama }}</option>
+                                <option value="{{$item->id}}">{{ $item->name }}</option>
                             @endforeach
                         </select>
                         @error('user_id')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
-                    </div> --}}
+                    </div>
                     <div class="mb-3">
                         <label for="sesi_id" class="form-label"
                             >Sesi</label

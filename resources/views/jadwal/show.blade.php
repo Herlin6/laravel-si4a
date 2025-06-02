@@ -43,10 +43,10 @@
                         <th>Mata Kuliah</th>
                         <td>{{ $jadwal->mata_kuliah->nama }}</td>
                     </tr>
-                    {{-- <tr>
+                    <tr>
                         <th>Dosen</th>
-                        <td>{{ $jadwal->user->nama }}</td>
-                    </tr> --}}
+                        <td>{{ $jadwal->user->name }}</td>
+                    </tr>
                     <tr>
                         <th>Sesi</th>
                         <td>{{ $jadwal->sesi->nama }}</td>

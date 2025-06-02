@@ -25,9 +25,9 @@ class JadwalController extends Controller
     public function create()
     {
         $mata_kuliah = Mata_Kuliah::all();
-        // $user = User::all();
+        $user = User::all();
         $sesi = Sesi::all();
-        return view('jadwal.create', compact('mata_kuliah', 'sesi'));
+        return view('jadwal.create', compact('mata_kuliah', 'sesi', 'user'));
     }
 
     /**
@@ -41,7 +41,7 @@ class JadwalController extends Controller
             'kode_smt' => 'required',
             'kelas' => 'required',
             'mata_kuliah_id' => 'required',
-            // 'user_id' => '',
+            'user_id' => 'required',
             'sesi_id' => 'required',
         ]);
         Jadwal::create($input);
@@ -64,7 +64,8 @@ class JadwalController extends Controller
         // dd($jadwal);
         $mata_kuliah = Mata_Kuliah::all();
         $sesi = Sesi::all();
-        return view('jadwal.edit', compact('jadwal', 'mata_kuliah', 'sesi'));
+        $user = User::all();
+        return view('jadwal.edit', compact('jadwal', 'mata_kuliah', 'sesi', 'user'));
     }
 
     /**
@@ -77,7 +78,7 @@ class JadwalController extends Controller
             'kode_smt' => 'required',
             'kelas' => 'required',
             'mata_kuliah_id' => 'required',
-            // 'user_id' => '',
+            'user_id' => 'required',
             'sesi_id' => 'required',
         ]);
         $jadwal->update($input);

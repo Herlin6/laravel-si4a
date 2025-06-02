@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kode_smt', 5);
             $table->string('kelas', 5);
             $table->foreignId('mata_kuliah_id')->constrained('mata_kuliah')->onDelete('restrict');
-            $table->foreignId('dosen_id')->constrained('users')->onDelete('restrict');
+            $table->foreignId('user_id')->constrained('users')->onDelete('restrict');
             $table->foreignId('sesi_id')->constrained('sesi')->onDelete('restrict');
             $table->timestamps();
         });
