@@ -33,8 +33,11 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', Mahasiswa::class)) {
+            abort(403);
+        }
         // validasi input
-        $input = $request-> validate([
+        $input = $request->validate([
             'npm' => 'required|unique:mahasiswa',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
@@ -84,7 +87,11 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
         //validasi input
-        $input = $request-> validate([
+        // cek apakah user memiliki izin untuk mengupdate fakultas
+        if ($request->user()->cannot('update', $mahasiswa)) {
+            abort(403);   
+        }
+        $input = $request->validate([
             'npm' => 'required',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
@@ -117,8 +124,11 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy(Request $request, Mahasiswa $mahasiswa)
     {
+        if ($request->user()->cannot('delete', $mahasiswa)) {
+            abort(403);
+        }
         $mahasiswa->delete();
         if ($mahasiswa->foto){
             $fotoPath = public_path('images/' . $mahasiswa->foto);

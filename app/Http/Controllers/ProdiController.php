@@ -34,6 +34,9 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', Prodi::class)) {
+            abort(403);   
+        }
         // validasi input
         $input = $request-> validate([
             'nama' => 'required|unique:prodi',
@@ -73,6 +76,9 @@ class ProdiController extends Controller
     public function update(Request $request, $prodi)
     {
         $prodi = Prodi::findOrFail($prodi);
+        if ($request->user()->cannot('update', $prodi)) {
+            abort(403);   
+        }
         //validasi input
         $input = $request-> validate([
             'nama' => 'required',
@@ -88,8 +94,11 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodi $prodi)
+    public function destroy(Request $request, Prodi $prodi)
     {
+        if ($request->user()->cannot('create', Prodi::class)) {
+            abort(403);   
+        }
         $prodi->delete();
         return redirect()->route('prodi.index')->with('success', 'Prodi a.n. '. $prodi->nama.' berhasil dihapus.');
     }
